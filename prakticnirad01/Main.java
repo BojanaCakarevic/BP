@@ -6,6 +6,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		try {
+		
 		Clan c = new Clan(6, "Milan", "Milosevic", "Sime Milosevica 5");
 		
 		System.out.println("1. UNOS NOVOG CLANA");
@@ -34,10 +36,10 @@ public class Main {
 		DBF.prikazNaslova(4);
 		System.out.println("-------------------------------------");
 		
-		try {
-			DBConnection.closeConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			DBConnection.closeConnection();
 		}
 	}
 
