@@ -4,6 +4,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		try {
+		
 		Radnik r = new Radnik(38, "Milan", "Mitrovic", "21-02-1995", 1);
 		
 		System.out.println("UNOS NOVOG RADNIKA");
@@ -30,7 +32,12 @@ public class Main {
 		System.out.println("PRIKAZI RADNIKE NA OVOM RADNOM MESTU");
 		DBF.prikaziRadnike(1);
 		System.out.println("--------------------------------");
-		
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBConnection.closeConnection();
+		}
 	}
 
 }
