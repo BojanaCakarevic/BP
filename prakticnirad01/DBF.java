@@ -44,7 +44,7 @@ public class DBF {
 		try {
 			DBConnection.getConn().setAutoCommit(true);
 
-			pstmt = DBConnection.getConn().prepareStatement("update Clan set novaAdresa = ? where id = ?");
+			pstmt = DBConnection.getConn().prepareStatement("update Clan set adresa = ? where clanski_broj = ?");
 			pstmt.setInt(2, id);
 			pstmt.setString(1, novaAdresa);
 			int brRedova = pstmt.executeUpdate();
@@ -107,7 +107,6 @@ public class DBF {
 			rset = stmt.executeQuery(
 					"select k.naslov from Knjiga k, Iznajmljuje i, Clan c where k.inventarni_broj = i.inventarni_broj and "
 							+ " i.clanski_broj = c.clanski_broj and i.clanski_broj = " + id);
-			// ako zelimo po imenu, mogli smo napisati c.ime = id pri cemu bi ovaj id onda bio String parametar
 			while (rset.next()) {
 				System.out.println(rset.getString(1));
 			}
